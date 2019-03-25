@@ -13,10 +13,7 @@ class Leaf:
         else:
             raise ValueError("Usage: counter must be type int")
 
-        if type(wordList) is list:
-            self.wordLsit = wordList
-        else:
-            raise ValueError("Usage: wordList must be type list")
+        self.wordList = []
 
 class Node:
     def __init__(self, ):
