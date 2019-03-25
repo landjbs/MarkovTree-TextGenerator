@@ -16,5 +16,11 @@ class Leaf:
         # list of words between nth word and initial word
         self.wordList = []
 
+    def add(self, word):
+        if type(word) is str:
+            self.wordList.append(word)
+        else:
+            raise ValueError("Usage: added word must be type string")
+
 class Node:
     def __init__(self, ):
