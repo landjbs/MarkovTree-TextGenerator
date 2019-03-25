@@ -3,16 +3,17 @@ class Leaf:
     Word following n previous words
     """
     def __init__(self, name, counter):
+        # Name of nth word
         if type(name) is str:
             self.name = name
         else:
             raise ValueError("Usage: name must be type string")
-
+        # distance from inital word
         if type(counter) is int:
             self.counter = counter
         else:
             raise ValueError("Usage: counter must be type int")
-
+        # list of words between nth word and initial word
         self.wordList = []
 
 class Node:
