@@ -51,13 +51,16 @@ def process_text_folder(folder):
     Args: name of folder containing txt files
     Returns: list of all processed words in all texts
     """
-    processedWords = [([] + process_text(f"{folder}/{file}") for file in os.listdir(folder))]
+    processedWords = []
+    for file in os.listdir(folder):
+        processedWords += process_text(f"{folder}/{file}")
     return processedWords
 
 start = time.time()
 
-sample = process_text('sample_texts/warandpeace.txt')
-# sample = process_text_folder("sample_texts")
+sample = process_text_folder("sample_texts")
+
+print(len(sample))
 
 end = time.time()
 print(end - start)
