@@ -9,8 +9,8 @@ def str_check(a,b):
              str_check("fo", "foo") returns 1
     '''
     #take strings to uppercase
-    subject = a.upper()
-    check = b.upper()
+    subject = a.lower()
+    check = b.lower()
     #determine if strings are the same
     if subject == check:
         return 0

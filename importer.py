@@ -20,7 +20,7 @@ def process_text(text):
     words = text.split(" ")
     # clean all words in words list
     processedWords = list(map(clean_word, words))
-    # remove all individual spaces from processedWords
+    # remove all individual spaces from processWords
     while "" in processedWords:
         processedWords.remove("")
     return processedWords
