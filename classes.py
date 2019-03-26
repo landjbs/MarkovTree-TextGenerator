@@ -1,6 +1,8 @@
 class Leaf:
     """
-    Word following n previous words
+    The Leaf stems from a sequence of n words, and tracks the frequency
+    at which different words follow. The Leaf provides the selection from which
+    a next word will be chosen
     """
     def __init__(self, name, counter):
         # Name of nth word
@@ -8,26 +10,32 @@ class Leaf:
             self.name = name
         else:
             raise ValueError("Usage: name must be type string")
-        # distance from inital word
+        # number of times leaf is reached in text
         if type(counter) is int:
             self.counter = counter
         else:
             raise ValueError("Usage: counter must be type int")
-        # list of words between nth word and initial word
+        # list of all final words that occur, with frequency at which they occur
         self.wordList = []
 
     def add(self, word):
+        # adds a word to the list
         if type(word) is str:
             self.wordList.append(word)
         else:
             raise ValueError("Usage: added word must be type string")
-
+        # search for word in list, add a tally to counter
         word_present = False
         for i, pair in enumerate(self.wordList):
             if pair[0] == self.newWord:
                 pair[1] += 1
                 word_present = True
-        if word_present = False
+        # if word is not in list, add with one tally
+        if word_present == False:
+            self.wordList.append((self.newWord,1))
+
+        # add tally to the overall leaf counter (denominator for probability)
+        self.counter += 1
 
 class Node:
     def __init__(self, ):
