@@ -21,8 +21,8 @@ def process_text(text):
     # clean all words in words list
     processedWords = list(map(clean_word, words))
     # remove all individual spaces from processWords
-    while " " in processedWords:
-        processedWords.remove(" ")
+    while "" in processedWords:
+        processedWords.remove("")
     return processedWords
 
-print(process_text("hi MY n@ame?? is 4q234landon???"))
+print(process_text("hi MY n@ame?? is 4q234landon   ???"))
