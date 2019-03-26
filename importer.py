@@ -12,24 +12,26 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
-def read_file(file):
-    """
-    Args: .txt file to read
-    Returns: string of contents of .txt file
-    """
-    with open(file) as FileObj:
-        text = "".join([line for line in FileObj])
-    return text
+# def read_file(file):
+#     """
+#     Args: .txt file to read
+#     Returns: string of contents of .txt file
+#     """
+#     with open(file) as FileObj:
+#         text = "".join([line for line in FileObj])
+#     return text
 
 def process_text(file):
     """
     Args: .txt file to read
     Returns: list of lowercase, letter-only words in file
     """
-    text = read_file(file)
+    with open(file) as FileObj:
+        text = "".join([line for line in FileObj])
+    # text = read_file(file)
     # split text by spacing
-    words = text.split(" ")
-    print('past')
+    words = text.replace("\n", " ").split(" ")
+    print("print here")
     # clean all words in words list
     processedWords = list(map(clean_word, words))
     # remove all individual spaces from processWords
@@ -41,6 +43,6 @@ start=datetime.now()
 
 sample = process_text("sample_texts/warandpeace.txt")
 
-print(sample)
-
 print(datetime.now()-start)
+
+# print(sample)
