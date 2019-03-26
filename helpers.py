@@ -1,13 +1,13 @@
-'''
-purpose: determine which of two strings comes first alphabetically
-args: a - subject string
-      b - string to be checked against
-returns: 0 if words are the same
-         1 if subject string is alphabetically first
-         -1 if check string is alphabetically first
-         str_check("fo", "foo") returns 1
-'''
 def str_check(a,b):
+    '''
+    purpose: determine which of two strings comes first alphabetically
+    args: a - subject string
+          b - string to be checked against
+    returns: 0 if words are the same
+             1 if subject string is alphabetically first
+             -1 if check string is alphabetically first
+             str_check("fo", "foo") returns 1
+    '''
     #take strings to uppercase
     subject = a.upper()
     check = b.upper()
