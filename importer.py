@@ -1,4 +1,5 @@
 import string
+from datetime import datetime
 
 def clean_word(word):
     """
@@ -11,11 +12,21 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
-def process_text(text):
+def read_file(file):
     """
-    Args: string of all words in a text
-    Returns: list of lowercase, letter-only words
+    Args: .txt file to read
+    Returns: string of contents of .txt file
     """
+    with open(file) as FileObj:
+        text = "".join([line for line in FileObj])
+    return text
+
+def process_text(file):
+    """
+    Args: .txt file to read
+    Returns: list of lowercase, letter-only words in file
+    """
+    text = read_file(file)
     # split text by spacing
     words = text.split(" ")
     # clean all words in words list
@@ -25,4 +36,10 @@ def process_text(text):
         processedWords.remove("")
     return processedWords
 
-print(process_text("hi MY n@ame?? is 4q234landon??? "))
+start=datetime.now()
+
+sample = process_text("sample_texts/warandpeace.txt")
+
+print(datetime.now()-start)
+
+print('done')
