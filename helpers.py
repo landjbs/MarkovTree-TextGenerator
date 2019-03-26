@@ -29,17 +29,3 @@ def str_check(a,b):
         return -1
     else:
         return 1
-
-def runtime(f, x):
-    """
-    Args: function to analyze, all inputs in order, in a tuple
-    Prints: runtime of function on given inputs (1 trial)
-    """
-    start=datetime.now()
-    f(x)
-    print(datetime.now()-start)
-
-def add(x, y):
-    return x, y
-
-runtime((++,) 4)
