@@ -21,11 +21,12 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
-def remove_empty(processedWords):
+def remove_empty(cleanedWords):
     """
     Args: list of words mapped by clean_word
     Returns: list of words with all empty strings removed
     """
+    return [word for word in cleanedWords if word != ""]
 
 def process_text(file):
     """
@@ -36,7 +37,8 @@ def process_text(file):
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
     # clean all words in words list
-    processedWords = list(map(clean_word, words))
+    cleanedWords = list(map(clean_word, words))
+    processedWords = remove_empty(cleanedWords)
 
     return processedWords
 
@@ -45,5 +47,3 @@ start=datetime.now()
 sample = process_text("sample_texts/warandpeace.txt")
 
 print(datetime.now()-start)
-
-print(sample)
