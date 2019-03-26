@@ -33,11 +33,13 @@ class Leaf:
         # if word is not in list, add with one tally
         if word_present == False:
             self.wordList.append((self.newWord,1))
-
         # add tally to the overall leaf counter (denominator for probability)
         self.counter += 1
 
 class Node:
+    """
+    
+    """
     def __init__(self, seqList, endWord):
         # name of first word
         self.name = seqList[0]
