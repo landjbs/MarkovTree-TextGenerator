@@ -1,3 +1,5 @@
+from helpers import str_check
+
 class Leaf:
     """
     The Leaf stems from a sequence of n words, and tracks the frequency
@@ -39,6 +41,7 @@ class Leaf:
 
 class Node:
     def __init__(self, seqList, endWord):
+        self.leafNode = False
         # name of first word
         self.name = seqList[0]
         # if not nth node
@@ -47,6 +50,7 @@ class Node:
             self.center = Node(seqList[1:], endWord)
         else:
             # create leaf at end of nth node
+            self.leafNode = True
             self.center = Leaf(self.name, 1)
             self.center.add(endWord)
         # set room for horizontal nodes
@@ -54,3 +58,24 @@ class Node:
         self.right = None
 
     def search_add(self, seqList, endWord):
+
+        check_word = seqList[0]
+        condition = str_check(check_word, self.name)
+        # go one layer further
+        if condition == 0:
+            if self.leafNode:
+                self.center.add(endWord)
+            else:
+                self.center.search_add(seqList[1:], endWord)
+        # horizontal movement - word can be found later alphabetically
+        elif condition == -1:
+            if self.left is None:
+                self.left = Node(seqList, endWord)
+            else:
+                self.left.search_add(seqList, endWord)
+        # horizontal movement - word can be found earlier alphabetically
+        else:
+            if self.right is None:
+                self.right = Node(seqList, endWord)
+            else:
+                self.right.search_add(seqList, endWord)
