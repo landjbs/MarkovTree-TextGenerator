@@ -3,7 +3,7 @@ def read_file(file):
     Args: txt file to read
     Returns: string of contents of txt file
     """
-    with open(file) as FileObj:
+    with open(file, encoding = 'utf8') as FileObj:
         text = "".join([line for line in FileObj])
     return text
 
@@ -38,3 +38,6 @@ def process_text(file):
     processedWords = remove_empty(cleanedWords)
 
     return processedWords
+
+print("hello")
+print(process_text('sample_texts/warandpeace.txt'))
