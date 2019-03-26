@@ -52,3 +52,5 @@ class Node:
         # set room for horizontal nodes
         self.left = None
         self.right = None
+
+    def search_add(self, seqList, endWord):
