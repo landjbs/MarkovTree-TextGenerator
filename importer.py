@@ -1,5 +1,4 @@
-import os, time
-import string
+import os, string
 
 def read_file(file):
     """
@@ -55,13 +54,3 @@ def process_text_folder(folder):
     for file in os.listdir(folder):
         processedWords += process_text(f"{folder}/{file}")
     return processedWords
-
-# timing stuff
-start = time.time()
-
-sample = process_text_folder("sample_texts")
-
-end = time.time()
-
-print(len(sample))
-print(end - start)
