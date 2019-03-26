@@ -1,6 +1,15 @@
 import string
 from datetime import datetime
 
+def read_file(file):
+    """
+    Args: .txt file to read
+    Returns: string of contents of .txt file
+    """
+    with open(file) as FileObj:
+        text = "".join([line for line in FileObj])
+    return text
+
 def clean_word(word):
     """
     Args: raw word
@@ -12,14 +21,11 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
-def read_file(file):
+def remove_empty(processedWords):
     """
-    Args: .txt file to read
-    Returns: string of contents of .txt file
+    Args: list of words mapped by clean_word
+    Returns: list of words with all empty strings removed
     """
-    with open(file) as FileObj:
-        text = "".join([line for line in FileObj])
-    return text
 
 def process_text(file):
     """
@@ -29,12 +35,9 @@ def process_text(file):
     text = read_file(file)
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
-    print(words)
     # clean all words in words list
     processedWords = list(map(clean_word, words))
-    # remove all individual spaces from processWords
-    while "" in processedWords:
-        processedWords.remove("")
+
     return processedWords
 
 start=datetime.now()
@@ -43,4 +46,4 @@ sample = process_text("sample_texts/warandpeace.txt")
 
 print(datetime.now()-start)
 
-# print(sample)
+print(sample)
