@@ -38,4 +38,16 @@ class Leaf:
         self.counter += 1
 
 class Node:
-    def __init__(self, ):
+    def __init__(self, seqList, endWord):
+        #name of first word
+        self.name = seqList[-1]
+        #if not nth node
+        if len(seqList > 1):
+            #create next layer
+            self.center = Node(seqList[:-1], endWord)
+        else:
+            #create leaf at end of nth node
+            self.center = Leaf(endWord, 1)
+        #set room for horizontal nodes
+        self.left = None
+        self.right = None
