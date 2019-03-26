@@ -26,7 +26,7 @@ class Leaf:
             raise ValueError("Usage: added word must be type string")
         # search for word in list, add a tally to counter
         word_present = False
-        for i,pair in enumerate(self.wordList):
+        for i, pair in enumerate(self.wordList):
             if pair[0] == self.newWord:
                 pair[1] += 1
                 word_present = True
