@@ -1,6 +1,5 @@
 import string
 from datetime import datetime
-import re
 
 def clean_word(word):
     """
@@ -19,7 +18,7 @@ def read_file(file):
     Returns: string of contents of .txt file
     """
     with open(file) as FileObj:
-        text = "".join([line + " " for line in FileObj])
+        text = "".join([line for line in FileObj])
     return text
 
 def process_text(file):
@@ -29,9 +28,7 @@ def process_text(file):
     """
     text = read_file(file)
     # split text by spacing
-    # words = text.split(" ")
-    words = re.split(" |\n", text)
-    print('past')
+    words = text.split(" ")
     # clean all words in words list
     processedWords = list(map(clean_word, words))
     # remove all individual spaces from processWords
@@ -43,6 +40,6 @@ start=datetime.now()
 
 sample = process_text("sample_texts/warandpeace.txt")
 
-print(sample)
-
 print(datetime.now()-start)
+
+print('done')
