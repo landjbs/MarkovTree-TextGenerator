@@ -23,11 +23,11 @@ class Leaf:
             raise ValueError("Usage: added word must be type string")
 
         word_present = False
-        for i,pair in enumerate(self.wordList):
+        for i, pair in enumerate(self.wordList):
             if pair[0] == self.newWord:
                 pair[1] += 1
                 word_present = True
-        if word_present = false
+        if word_present = False
 
 class Node:
     def __init__(self, ):
