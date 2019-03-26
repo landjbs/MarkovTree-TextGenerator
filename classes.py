@@ -18,9 +18,17 @@ class Leaf:
 
     def add(self, word):
         if type(word) is str:
-            self.wordList.append(word)
+            self.newWord = word
         else:
             raise ValueError("Usage: added word must be type string")
+
+        word_present = False
+        for i,pair in enumerate(self.wordList):
+            if pair[0] == self.newWord:
+                pair[1] += 1
+                word_present = True
+        if word_present = false
+
 
 class Node:
     def __init__(self, ):
