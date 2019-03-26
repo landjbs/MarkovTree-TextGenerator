@@ -1,5 +1,3 @@
-from datetime import datetime
-
 def str_check(a,b):
     '''
     Purpose: determine which of two strings comes first alphabetically
