@@ -18,7 +18,7 @@ def read_file(file):
     Returns: string of contents of .txt file
     """
     with open(file) as FileObj:
-        text = "".join([line for line in FileObj])
+        text = "".join([line + " " for line in FileObj])
     return text
 
 def process_text(file):
