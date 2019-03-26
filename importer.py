@@ -1,7 +1,7 @@
 def read_file(file):
     """
-    Args: .txt file to read
-    Returns: string of contents of .txt file
+    Args: txt file to read
+    Returns: string of contents of txt file
     """
     with open(file) as FileObj:
         text = "".join([line for line in FileObj])
@@ -27,7 +27,7 @@ def remove_empty(cleanedWords):
 
 def process_text(file):
     """
-    Args: .txt file to read
+    Args: txt file to read
     Returns: list of lowercase, letter-only words in file
     """
     text = read_file(file)

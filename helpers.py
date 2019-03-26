@@ -2,10 +2,10 @@ from datetime import datetime
 
 def str_check(a,b):
     '''
-    purpose: determine which of two strings comes first alphabetically
-    args: a - subject string
+    Purpose: determine which of two strings comes first alphabetically
+    Args: a - subject string
           b - string to be checked against
-    returns: 0 if words are the same
+    Returns: 0 if words are the same
              1 if subject string is alphabetically first
              -1 if check string is alphabetically first
              str_check("fo", "foo") returns 1
@@ -30,11 +30,16 @@ def str_check(a,b):
     else:
         return 1
 
-def time_function(f):
+def runtime(f, x):
+    """
+    Args: function to analyze, all inputs in order, in a tuple
+    Prints: runtime of function on given inputs (1 trial)
+    """
     start=datetime.now()
-
-    f
-
+    f(x)
     print(datetime.now()-start)
 
-time_function((3 + 4))
+def add(x, y):
+    return x, y
+
+runtime((++,) 4)
