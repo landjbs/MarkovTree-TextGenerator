@@ -19,7 +19,7 @@ def read_file(file):
     Returns: string of contents of .txt file
     """
     with open(file) as FileObj:
-        text = "".join([line + " " for line in FileObj])
+        text = "".join([line for line in FileObj])
     return text
 
 def process_text(file):
@@ -29,8 +29,8 @@ def process_text(file):
     """
     text = read_file(file)
     # split text by spacing
-    # words = text.split(" ")
-    words = re.split(" |\n", text)
+    words = text.split(" ")
+    # words = re.split(" |\n", text)
     print('past')
     # clean all words in words list
     processedWords = list(map(clean_word, words))
