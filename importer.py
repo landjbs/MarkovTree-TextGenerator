@@ -38,6 +38,3 @@ def process_text(file):
     processedWords = remove_empty(cleanedWords)
 
     return processedWords
-
-print("hello")
-print(process_text('sample_texts/warandpeace.txt'))
