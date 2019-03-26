@@ -56,11 +56,12 @@ def process_text_folder(folder):
         processedWords += process_text(f"{folder}/{file}")
     return processedWords
 
+# timing stuff
 start = time.time()
 
 sample = process_text_folder("sample_texts")
 
-print(len(sample))
-
 end = time.time()
+
+print(len(sample))
 print(end - start)
