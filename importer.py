@@ -38,3 +38,7 @@ def process_text(file):
     processedWords = remove_empty(cleanedWords)
 
     return processedWords
+
+def process_text_folder(folder):
+    text = "".join([process_text(file) for file in  os.listdir(folder)])
+    return text
