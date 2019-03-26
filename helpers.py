@@ -27,3 +27,10 @@ def str_check(a,b):
         return -1
     else:
         return 1
+
+def time_function(f):
+    start=datetime.now()
+
+    f
+
+    print(datetime.now()-start)
