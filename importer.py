@@ -1,13 +1,13 @@
 import os, time
-from fnmatch import fnmatch
+import string
 
 def read_file(file):
     """
     Args: txt file to read
     Returns: string of contents of txt file
     """
-    # check if file is .txt
-    if not fnmatch(file, '*.txt'):
+    # check if file is of format .txt
+    if not file.endswith(".txt"):
         raise ValueError(f"Usage: {file} must be of type .txt")
     # write txt file into string, line by line
     with open(file, encoding = 'utf8') as FileObj:
@@ -56,8 +56,8 @@ def process_text_folder(folder):
 
 start = time.time()
 
-# sample = process_text('sample_texts/test.pdf')
-sample = process_text_folder("sample_texts")
+sample = process_text('sample_texts/warandpeace.txt')
+# sample = process_text_folder("sample_texts")
 
 end = time.time()
 print(end - start)
