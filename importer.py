@@ -7,10 +7,9 @@ def clean_word(word):
     """
     # lambda to discard char if not lowercase letter
     strip = lambda c : c if ord(c) in range(97,123) else ""
-    lowerWord = word.lower()
-
-    for c in word:
-        strip(c)
+    # cast word to lower and create new string of clean chars
+    cleaned = "".join([strip(c) for c in word.lower()])
+    return cleaned
 
 def process_text(text):
     """
@@ -20,14 +19,3 @@ def process_text(text):
     strip = lambda c : c if ord(c) in range(97,123) else ""
 
     wordList = text.split(" ")
-
-    for word in wordList:
-        for char in word:
-            store += strip(char)
-
-    print(store)
-
-# process_text("4 5 3 1")
-
-
-x = string.maketrans("","")
