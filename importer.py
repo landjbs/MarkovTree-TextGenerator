@@ -1,3 +1,5 @@
+import os
+
 def read_file(file):
     """
     Args: txt file to read
@@ -40,5 +42,13 @@ def process_text(file):
     return processedWords
 
 def process_text_folder(folder):
-    text = "".join([process_text(file) for file in  os.listdir(folder)])
-    return text
+    """
+    Args: name of folder containing txt files
+    Returns: list of all processed words in all texts
+    """
+    processedWords = []
+    for file in os.listdir(folder):
+        processedWords += process_text(f"{folder}/{file}")
+    return processedWords
+
+print(process_text_folder("sample_texts"))
