@@ -27,7 +27,11 @@ class Leaf:
             if pair[0] == self.newWord:
                 pair[1] += 1
                 word_present = True
-        if word_present = false
+
+        if word_present == False:
+            self.wordList.append((self.newWord,1))
+
+        self.counter += 1
 
 class Node:
     def __init__(self, ):
