@@ -47,7 +47,8 @@ class Node:
             self.center = Node(seqList[:-1], endWord)
         else:
             #create leaf at end of nth node
-            self.center = Leaf(endWord, 1)
+            self.center = Leaf(self.name, 1)
+            self.center.add(endWord)
         #set room for horizontal nodes
         self.left = None
         self.right = None
