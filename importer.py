@@ -16,6 +16,13 @@ def process_text(text):
     Args: string of all words in a text
     Returns: list of lowercase, letter-only words
     """
-    strip = lambda c : c if ord(c) in range(97,123) else ""
+    # split text by spacing
+    words = text.split(" ")
+    # clean all words in words list
+    processedWords = list(map(clean_word, words))
+    # remove all individual spaces from processWords
+    while " " in processedWords:
+        processedWords.remove(" ")
+    return processedWords
 
-    wordList = text.split(" ")
+print(process_text("hi MY n@ame?? is 4q234landon???"))
