@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def str_check(a,b):
     '''
     purpose: determine which of two strings comes first alphabetically
@@ -34,3 +36,5 @@ def time_function(f):
     f
 
     print(datetime.now()-start)
+
+time_function((3 + 4))

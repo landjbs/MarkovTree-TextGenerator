@@ -1,6 +1,3 @@
-import string
-from datetime import datetime
-
 def read_file(file):
     """
     Args: .txt file to read
@@ -41,9 +38,3 @@ def process_text(file):
     processedWords = remove_empty(cleanedWords)
 
     return processedWords
-
-start=datetime.now()
-
-sample = process_text("sample_texts/warandpeace.txt")
-
-print(datetime.now()-start)
