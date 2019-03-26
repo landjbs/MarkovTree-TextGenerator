@@ -1,5 +1,3 @@
-import os
-
 def read_file(file):
     """
     Args: txt file to read
@@ -50,5 +48,3 @@ def process_text_folder(folder):
     for file in os.listdir(folder):
         processedWords += process_text(f"{folder}/{file}")
     return processedWords
-
-print(process_text_folder("sample_texts"))
