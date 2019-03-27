@@ -7,6 +7,9 @@ class Leaf:
     a next word will be chosen
     """
     def __init__(self, name, counter):
+        """
+        Initialize leaf with word and counter of distance from base word
+        """
         # Name of nth word
         if type(name) is str:
             self.name = name
@@ -21,7 +24,9 @@ class Leaf:
         self.wordList = []
 
     def add(self, word):
-        # adds a word to the list
+        """
+        Adds single word to wordList of Leaf
+        """
         if type(word) is str:
             self.wordList.append(word)
         else:
@@ -40,7 +45,7 @@ class Leaf:
 
 class Node:
     """
-    
+
     """
     def __init__(self, seqList, endWord):
         self.leafNode = False
