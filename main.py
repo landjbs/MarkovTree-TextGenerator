@@ -19,10 +19,11 @@ for i in range(1,sample_length-(n+1)):
 gen_words = 100
 gen_text = []
 
-user_seed = "peach"
+user_seed = "third."
 
-if (set(user_seed.split())).issubset(set(sample)):
+if (set(process_text(user_seed))).issubset(set(sample)):
     seed = process_text(user_seed)
+    print(seed)
 else:
     raise ValueError("Usage: seed must be in sample")
 
