@@ -19,7 +19,7 @@ def clean_word(word):
     Returns: lowercase, letter-only word
     """
     # lambda to discard char if not lowercase letter
-    strip = lambda c : c if ord(c) in range(97,123) else ""
+    strip = lambda c : c if ord(c) in range(97,123) or c in [",",".","?"] else ""
     # cast word to lower and create new string of clean chars
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned

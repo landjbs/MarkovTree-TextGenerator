@@ -74,8 +74,8 @@ class Node:
             # create leaf at end of nth node
             # print("leafNode found")
             self.finalNode = True
-            self.center = Leaf(self.name)
-            self.center.add(endWord)
+            self.leaf = Leaf(self.name)
+            self.leaf.add(endWord)
         # set room for horizontal nodes
         self.left = None
         self.right = None
@@ -89,7 +89,7 @@ class Node:
         if condition == 0:
             # print("found word")
             if self.finalNode:
-                self.center.add(endWord)
+                self.leaf.add(endWord)
             else:
                 self.center.search_add(seqList[1:], endWord)
                 self.leaf.add(seqList[1])
@@ -110,18 +110,17 @@ class Node:
 
     def nav(self, seqList):
         check_word = seqList[0]
+        end = False
+        if len(seqList) == 1:
+            end = True
         condition = str_check(check_word, self.name)
         # go one layer further
         if condition == 0:
             # print("found word")
-            if self.finalNode:
-                return self.center.get_word()
+            if end:
+                return self.leaf.get_word()
             else:
-                search = self.center.nav(seqList[1:])
-                if search == False:
-                    return self.leaf.get_word()
-                else:
-                    return search
+                return self.center.nav(seqList[1:])
         # horizontal movement - word can be found later alphabetically
         elif condition == -1:
             if self.left is None:
