@@ -23,7 +23,7 @@ class Leaf:
     def add(self, word):
         # adds a word to the list
         if type(word) is str:
-            self.wordList.append(word)
+            self.newWord = word
         else:
             raise ValueError("Usage: added word must be type string")
         # search for word in list, add a tally to counter
@@ -40,7 +40,7 @@ class Leaf:
 
 class Node:
     """
-    
+
     """
     def __init__(self, seqList, endWord):
         self.leafNode = False
