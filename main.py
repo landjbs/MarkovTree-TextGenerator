@@ -18,7 +18,7 @@ for i in range(1,sample_length-(n+1)):
 # print(sample[500:500+n], tree.nav(sample[500:500+n]))
 gen_words = 100
 gen_text = []
-seed = process_text("pride and prejudice by")
+seed = process_text("hello there")
 
 for i in range(gen_words):
     next = False
