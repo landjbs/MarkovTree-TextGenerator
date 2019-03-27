@@ -59,7 +59,7 @@ class Node:
 
     """
     def __init__(self, seqList, endWord):
-        self.leafNode = False
+        self.finalNode = False
         # name of first word
         self.name = seqList[0]
         # if not nth node
@@ -68,10 +68,12 @@ class Node:
             # print(f"seqList: {seqList} at {self.name}")
             # print("not a leafnode, new node created")
             self.center = Node(seqList[1:], endWord)
+            self.leaf = Leaf(self.name)
+            self.leaf.add(seqList[1])
         else:
             # create leaf at end of nth node
             # print("leafNode found")
-            self.leafNode = True
+            self.finalNode = True
             self.center = Leaf(self.name)
             self.center.add(endWord)
         # set room for horizontal nodes
@@ -86,10 +88,11 @@ class Node:
         # go one layer further
         if condition == 0:
             # print("found word")
-            if self.leafNode:
+            if self.finalNode:
                 self.center.add(endWord)
             else:
                 self.center.search_add(seqList[1:], endWord)
+                self.leaf.add(seqList[1])
         # horizontal movement - word can be found later alphabetically
         elif condition == -1:
             if self.left is None:
@@ -111,21 +114,25 @@ class Node:
         # go one layer further
         if condition == 0:
             # print("found word")
-            if self.leafNode:
+            if self.finalNode:
                 return self.center.get_word()
             else:
-                return self.center.nav(seqList[1:])
+                search = self.center.nav(seqList[1:])
+                if search == False:
+                    return self.leaf.get_word()
+                else:
+                    return search
         # horizontal movement - word can be found later alphabetically
         elif condition == -1:
             if self.left is None:
                 # print("left node created")
-                return self.name
+                return False
             else:
                 return self.left.nav(seqList)
         # horizontal movement - word can be found earlier alphabetically
         else:
             if self.right is None:
                 # print("right node created")
-                return self.name
+                return False
             else:
                 return self.right.nav(seqList)

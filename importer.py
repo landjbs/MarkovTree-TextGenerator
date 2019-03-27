@@ -31,12 +31,11 @@ def remove_empty(cleanedWords):
     """
     return [word for word in cleanedWords if word != ""]
 
-def process_text(file):
+def process_text(text):
     """
-    Args: txt file to read
-    Returns: list of lowercase, letter-only words in file
+    Args: text
+    Returns: list of lowercase, letter-only words in text
     """
-    text = read_file(file)
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
     # clean all words in words list
@@ -52,5 +51,5 @@ def process_text_folder(folder):
     """
     processedWords = []
     for file in os.listdir(folder):
-        processedWords += process_text(f"{folder}/{file}")
+        processedWords += process_text(read_file(f"{folder}/{file}"))
     return processedWords
