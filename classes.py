@@ -6,20 +6,18 @@ class Leaf:
     at which different words follow. The Leaf provides the selection from which
     a next word will be chosen
     """
-    def __init__(self, name, counter):
+    def __init__(self, name):
         """
         Initialize leaf with word and counter of distance from base word
         """
+        print("node added")
         # Name of nth word
         if type(name) is str:
             self.name = name
         else:
             raise ValueError("Usage: name must be type string")
         # number of times leaf is reached in text
-        if type(counter) is int:
-            self.counter = counter
-        else:
-            raise ValueError("Usage: counter must be type int")
+        self.counter = 0
         # list of all final words that occur, with frequency at which they occur
         self.wordList = []
 
@@ -27,6 +25,7 @@ class Leaf:
         """
         Adds single word to wordList of Leaf
         """
+        print("leaf already found, adding to count")
         if type(word) is str:
             self.newWord = word
         else:
@@ -35,13 +34,16 @@ class Leaf:
         word_present = False
         for i, pair in enumerate(self.wordList):
             if pair[0] == self.newWord:
+                print("word found in wordList")
                 pair[1] += 1
                 word_present = True
         # if word is not in list, add with one tally
         if word_present == False:
-            self.wordList.append((self.newWord,1))
+            self.wordList.append([self.newWord,1])
+        print(f"wordList: {self.wordList}")
         # add tally to the overall leaf counter (denominator for probability)
         self.counter += 1
+        print(self.counter)
 
 class Node:
     """
@@ -54,11 +56,14 @@ class Node:
         # if not nth node
         if len(seqList) > 1:
             # create next layer
+            print(f"seqList: {seqList} at {self.name}")
+            print("not a leafnode, new node created")
             self.center = Node(seqList[1:], endWord)
         else:
             # create leaf at end of nth node
+            print("leafNode found")
             self.leafNode = True
-            self.center = Leaf(self.name, 1)
+            self.center = Leaf(self.name)
             self.center.add(endWord)
         # set room for horizontal nodes
         self.left = None
@@ -66,10 +71,12 @@ class Node:
 
     def search_add(self, seqList, endWord):
 
+        print(f"seqList: {seqList} at {self.name}")
         check_word = seqList[0]
         condition = str_check(check_word, self.name)
         # go one layer further
         if condition == 0:
+            print("found word")
             if self.leafNode:
                 self.center.add(endWord)
             else:
@@ -77,12 +84,14 @@ class Node:
         # horizontal movement - word can be found later alphabetically
         elif condition == -1:
             if self.left is None:
+                print("left node created")
                 self.left = Node(seqList, endWord)
             else:
                 self.left.search_add(seqList, endWord)
         # horizontal movement - word can be found earlier alphabetically
         else:
             if self.right is None:
+                print("right node created")
                 self.right = Node(seqList, endWord)
             else:
                 self.right.search_add(seqList, endWord)
