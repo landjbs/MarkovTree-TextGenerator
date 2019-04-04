@@ -1,17 +1,17 @@
-from importer import process_text, read_file, process_text_folder
+from importer import process_mutable
 from classes_test import Node
 
+SAMPLE_NAME = "sample_texts"
 
+sample = process_mutable(SAMPLE_NAME)
 
-# sample = process_text_folder("sample_texts")
-sample = process_text(read_file("sample_texts/prideandprejudice.txt"))
 sample_length = len(sample)
-print(sample_length)
+print(f"Loading {sample_length} samples from")
 n = 10
 tree = Node(sample[0:n], sample[n])
 
 for i in range(1,sample_length-(n+1)):
-    if i%10000 == 0:
+    if i%20000 == 0:
         print(f"{i} | {sample_length}")
     tree.search_add(sample[i:i+n], sample[i+n+1])
 

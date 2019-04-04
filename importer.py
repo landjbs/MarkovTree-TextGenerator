@@ -44,3 +44,9 @@ def process_text_folder(folder):
     for file in os.listdir(folder):
         processedWords += process_text(read_file(f"{folder}/{file}"))
     return processedWords
+
+def process_mutable(sample_name):
+    if SAMPLE_NAME.endswith(".txt"):
+        sample = process_text(read_file(SAMPLE_NAME))
+    else:
+        sample = process_text_folder(SAMPLE_NAME)
