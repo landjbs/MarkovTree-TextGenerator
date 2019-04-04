@@ -20,7 +20,7 @@ def clean_word(word):
     """
     # lambda to discard char if not lowercase letter
     strip = lambda c : (c if ord(c) in range(97,123)
-                                       or c in [",",".","?"] else "")
+                                       or c in [",",".","?","!"] else "")
     # cast word to lower and create new string of clean chars
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
@@ -46,7 +46,10 @@ def process_text_folder(folder):
     return processedWords
 
 def process_mutable(sample_name):
-    if SAMPLE_NAME.endswith(".txt"):
-        sample = process_text(read_file(SAMPLE_NAME))
+    if sample_name.endswith(".txt"):
+        type = "file"
+        sample = process_text(read_file(sample_name))
     else:
-        sample = process_text_folder(SAMPLE_NAME)
+        type = "folder"
+        sample = process_text_folder(sample_name)
+    return sample, type
