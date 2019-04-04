@@ -22,11 +22,7 @@ def clean_word(word):
     strip = lambda c : c if ord(c) in range(97,123) or c in [",",".","?"] else ""
     # cast word to lower and create new string of clean chars
     cleaned = "".join([strip(c) for c in word.lower()])
-    if not cleaned == "":
-        return cleaned
-    else:
-        return ""
-
+    return cleaned
 def process_text(text):
     """
     Args: text
@@ -35,8 +31,7 @@ def process_text(text):
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
     # clean all words in list and removed empty strings from cleaning junk
-    # processedWords = [w for w in list(map(clean_word, words)) if w !=""]
-    processedWords = list(map(clean_word, words))
+    processedWords = list(filter(None, map(clean_word, words)))
     return processedWords
 
 def process_text_folder(folder):
@@ -51,3 +46,5 @@ def process_text_folder(folder):
 
 
 sample = process_text_folder("sample_texts")
+
+print(sample[0:300])
