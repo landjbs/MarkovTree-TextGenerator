@@ -1,17 +1,17 @@
 from importer import process_mutable, process_text
 from classes_test import Node
 
-SAMPLE_NAME = "sample_texts/prideandprejudice.txt"
+SAMPLE_NAME = "sample_texts/warandpeace.txt"
 
 sample, type = process_mutable(SAMPLE_NAME)
 
 sample_length = len(sample)
-print(f"Loading {sample_length} samples from {type}, {SAMPLE_NAME}")
+print(f"Importing {sample_length} samples from {type}, {SAMPLE_NAME}")
 n = 10
 tree = Node(sample[0:n], sample[n])
 
 for i in range(1,sample_length-(n+1)):
-    print(f"|Completion: {round(i/sample_length, 2)}%", end="\r")
+    print(f"|Loading: {100*(round(i/sample_length, 2))}%", end="\r")
     tree.search_add(sample[i:i+n], sample[i+n+1])
 print("Import complete!")
 
@@ -20,13 +20,13 @@ gen_words = 100
 gen_text = []
 
 # user_seed = input("Seed:\n")
-#
+
 # if (set(process_text(user_seed))).issubset(set(sample)):
 #     seed = process_text(user_seed)
 # else:
 #     raise ValueError("Usage: seed must be in sample")
 
-seed = process_text("hello mother")
+seed = process_text("the")
 
 for i in range(gen_words):
     next = False
