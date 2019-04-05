@@ -19,18 +19,11 @@ def clean_word(word):
     Returns: lowercase, letter-only word
     """
     # lambda to discard char if not lowercase letter
-    strip = lambda c : c if ord(c) in range(97,123) or c in [",",".","?"] else ""
+    strip = lambda c : (c if ord(c) in range(97,123)
+                                       or c in [",",".","?","!"] else "")
     # cast word to lower and create new string of clean chars
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
-
-def remove_empty(cleanedWords):
-    """
-    Args: list of words mapped by clean_word
-    Returns: list of words with all empty strings removed
-    """
-    return [word for word in cleanedWords if word != ""]
-
 def process_text(text):
     """
     Args: text
@@ -38,10 +31,8 @@ def process_text(text):
     """
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
-    # clean all words in words list
-    cleanedWords = list(map(clean_word, words))
-    # remove all empty strings (products of cleaning pure junk)
-    processedWords = remove_empty(cleanedWords)
+    # clean all words in list and removed empty strings from cleaning junk
+    processedWords = list(filter(None, map(clean_word, words)))
     return processedWords
 
 def process_text_folder(folder):
@@ -53,3 +44,12 @@ def process_text_folder(folder):
     for file in os.listdir(folder):
         processedWords += process_text(read_file(f"{folder}/{file}"))
     return processedWords
+
+def process_mutable(sample_name):
+    if sample_name.endswith(".txt"):
+        type = "file"
+        sample = process_text(read_file(sample_name))
+    else:
+        type = "folder"
+        sample = process_text_folder(sample_name)
+    return sample, type
