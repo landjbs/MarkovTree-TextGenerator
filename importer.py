@@ -30,17 +30,22 @@ def tokenize_text(wordList, tokenList=[]):
     Args: processed word list and list of words consecutive words to tokenize
     Returns: processed word list with tokens as single, multi-word strings
     """
-    tokenizedWords = []
-    read = True
-    for counter, word in enumerate(wordList):
-        if word == "borne" and wordList[counter + 1] == "back" and wordList[counter + 2] == "ceaselessly" and read == True:
-            tokenizedWords.append(" ".join([word, wordList[counter + 1], wordList[counter + 2]]))
-            read = False
-        elif read == True:
-            tokenizedWords.append(word)
-        else:
-            read = True
-    return tokenizedWords
+    # tokenizedWords = []
+    # read = True
+    # for counter, word in enumerate(wordList):
+    #     if word == "borne" and wordList[counter + 1] == "back" and wordList[counter + 2] == "ceaselessly" and read == True:
+    #         tokenizedWords.append(" ".join([word, wordList[counter + 1], wordList[counter + 2]]))
+    #         read = False
+    #     elif read == True:
+    #         tokenizedWords.append(word)
+    #     else:
+    #         read = True
+    # return tokenizedWords
+    split = lambda token : token.split(" ")
+    splitTokens = list(map(split, tokenList))
+    for token in splitTokens:
+        start = wordList.index(token[0])
+        print(start)
 
 def process_text(text):
     """
@@ -49,10 +54,10 @@ def process_text(text):
     """
     # split text by spacing
     words = text.replace("\n", " ").split(" ")
-    # clean all words in list and removed empty strings from cleaning junk
+    # clean all words in list and remove empty strings from cleaning junk
     processedWords = list(filter(None, map(clean_word, words)))
-    tokenizedWords = tokenize_text(processedWords)
-    return tokenizedWords
+    # tokenizedWords = tokenize_text(processedWords, ["the back", "so we"])
+    return processedWords
 
 def process_text_folder(folder):
     """
@@ -73,4 +78,5 @@ def process_mutable(sample_name):
         sample = process_text_folder(sample_name)
     return sample, type
 
-print(process_mutable("sample_texts/thegreatgatsby.txt"))
+sample = process_mutable("sample_texts/thegreatgatsby.txt")
+print(sample[0])
