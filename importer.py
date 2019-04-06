@@ -24,6 +24,7 @@ def clean_word(word):
     # cast word to lower and create new string of clean chars
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
+
 def process_text(text):
     """
     Args: text
@@ -53,3 +54,5 @@ def process_mutable(sample_name):
         type = "folder"
         sample = process_text_folder(sample_name)
     return sample, type
+
+print(process_mutable("sample_texts/thegreatgatsby.txt"))
