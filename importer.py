@@ -36,6 +36,12 @@ def process_text(text):
     processedWords = list(filter(None, map(clean_word, words)))
     return processedWords
 
+def tokenize_text(wordsList, textList):
+    """
+    Args: processed word list and list of words consecutive words to tokenize
+    Returns: processed word list with tokens as single, multi-word strings
+    """
+
 def process_text_folder(folder):
     """
     Args: name of folder containing txt files
