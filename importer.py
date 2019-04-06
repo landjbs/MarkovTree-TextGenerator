@@ -25,17 +25,21 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
-def tokenize_text(wordsList, tokenList):
+def tokenize_text(wordList, tokenList=[]):
     """
     Args: processed word list and list of words consecutive words to tokenize
     Returns: processed word list with tokens as single, multi-word strings
     """
     tokenizedWords = []
-    for counter, word in enumerate(wordsList):
-        if word == "borne" && wordsList[counter + 1] == "back":
-            tokenizedWords.append(" ".join([word, wordsList[counte + 1]]))
-        else:
+    read = True
+    for counter, word in enumerate(wordList):
+        if word == "borne" and wordList[counter + 1] == "back" and wordList[counter + 2] == "ceaselessly" and read == True:
+            tokenizedWords.append(" ".join([word, wordList[counter + 1], wordList[counter + 2]]))
+            read = False
+        elif read == True:
             tokenizedWords.append(word)
+        else:
+            read = True
     return tokenizedWords
 
 def process_text(text):
