@@ -25,6 +25,19 @@ def clean_word(word):
     cleaned = "".join([strip(c) for c in word.lower()])
     return cleaned
 
+def tokenize_text(wordsList, tokenList):
+    """
+    Args: processed word list and list of words consecutive words to tokenize
+    Returns: processed word list with tokens as single, multi-word strings
+    """
+    tokenizedWords = []
+    for counter, word in enumerate(wordsList):
+        if word == "borne" && wordsList[counter + 1] == "back":
+            tokenizedWords.append(" ".join([word, wordsList[counte + 1]]))
+        else:
+            tokenizedWords.append(word)
+    return tokenizedWords
+
 def process_text(text):
     """
     Args: text
@@ -34,13 +47,8 @@ def process_text(text):
     words = text.replace("\n", " ").split(" ")
     # clean all words in list and removed empty strings from cleaning junk
     processedWords = list(filter(None, map(clean_word, words)))
-    return processedWords
-
-def tokenize_text(wordsList, textList):
-    """
-    Args: processed word list and list of words consecutive words to tokenize
-    Returns: processed word list with tokens as single, multi-word strings
-    """
+    tokenizedWords = tokenize_text(processedWords)
+    return tokenizedWords
 
 def process_text_folder(folder):
     """
