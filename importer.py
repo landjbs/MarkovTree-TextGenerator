@@ -1,4 +1,5 @@
 import os, string
+# nltk.download('averaged_perceptron_tagger')
 
 def read_file(file):
     """
@@ -47,6 +48,12 @@ def tokenize_text(wordList, tokenList=[]):
         start = wordList.index(token[0])
         print(start)
 
+def find_type(word):
+    if ord(word[0]) in range(97,110):
+        return (word, 1)
+    else:
+        return (word, 2)
+
 def process_text(text):
     """
     Args: text
@@ -57,6 +64,7 @@ def process_text(text):
     # clean all words in list and remove empty strings from cleaning junk
     processedWords = list(filter(None, map(clean_word, words)))
     # tokenizedWords = tokenize_text(processedWords, ["the back", "so we"])
+    # processedWords = list(map((lambda x : x[0]), processedWords))
     return processedWords
 
 def process_text_folder(folder):
@@ -78,5 +86,5 @@ def process_mutable(sample_name):
         sample = process_text_folder(sample_name)
     return sample, type
 
-sample = process_mutable("sample_texts/thegreatgatsby.txt")
-print(sample[0])
+# sample = process_mutable("sample_texts/thegreatgatsby.txt")
+# print(sample[0])

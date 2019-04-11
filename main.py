@@ -1,7 +1,7 @@
 from importer import process_mutable, process_text
 from classes_test import Node
 
-SAMPLE_NAME = "sample_texts/warandpeace.txt"
+SAMPLE_NAME = "sample_texts/thegreatgatsby.txt"
 
 sample, type = process_mutable(SAMPLE_NAME)
 
@@ -11,7 +11,7 @@ n = 10
 tree = Node(sample[0:n], sample[n])
 
 for i in range(1,sample_length-(n+1)):
-    print(f"|Loading: {100*(round(i/sample_length, 2))}%", end="\r")
+    print(f"|Loading: {round(i/sample_length, 2)}", end="\r")
     tree.search_add(sample[i:i+n], sample[i+n+1])
 print("Import complete!")
 
