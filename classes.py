@@ -21,9 +21,7 @@ class Leaf:
         self.wordList = []
 
     def add(self, word):
-        """
-        Adds single word to wordList of Leaf
-        """
+        """ Adds single word to wordList of Leaf """
         # print("leaf already found, adding to count")
         assert (isinstance(word, str)), "Usage: added word must be type string"
         self.newWord = word
