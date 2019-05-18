@@ -8,21 +8,15 @@ class Leaf:
     a next word will be chosen
     """
     def __init__(self, name):
-        """
-        Initialize leaf with word and counter of distance from base word
-        """
-        # print("node added")
+        """ Initialize leaf with word and counter of distance from base word """
         # Name of nth word
         assert (isinstance(name, str)), "Usage: name must be type string"
-        self.name = name
-        # number of times leaf is reached in text
-        self.counter = 0
-        # list of all final words that occur, with frequency at which they occur
-        self.wordList = []
+        self.name = name # name of the string
+        self.counter = 0 # number of times leaf is reached in text
+        self.wordList = [] # list of all final words with frequency of occurence
 
     def add(self, word):
         """ Adds single word to wordList of Leaf """
-        # print("leaf already found, adding to count")
         assert (isinstance(word, str)), "Usage: added word must be type string"
         self.newWord = word
         # search for word in list, add a tally to counter
@@ -35,10 +29,8 @@ class Leaf:
         # if word is not in list, add with one tally
         if word_present == False:
             self.wordList.append([self.newWord,1])
-        # print(f"wordList: {self.wordList}")
         # add tally to the overall leaf counter (denominator for probability)
         self.counter += 1
-        # print(self.counter)
     def get_word(self):
         print(self.counter, self.wordList)
         num = random() * self.counter
