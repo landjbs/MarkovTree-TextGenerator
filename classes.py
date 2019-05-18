@@ -11,11 +11,10 @@ class Leaf:
         """
         Initialize leaf with word and counter of distance from base word
         """
+        # print("node added")
         # Name of nth word
-        if type(name) is str:
-            self.name = name
-        else:
-            raise ValueError("Usage: name must be type string")
+        assert (isinstance(name, str)), "Usage: name must be type string"
+        self.name = name
         # number of times leaf is reached in text
         self.counter = 0
         # list of all final words that occur, with frequency at which they occur
@@ -26,10 +25,8 @@ class Leaf:
         Adds single word to wordList of Leaf
         """
         # print("leaf already found, adding to count")
-        if type(word) is str:
-            self.newWord = word
-        else:
-            raise ValueError("Usage: added word must be type string")
+        assert (isinstance(word, str)), "Usage: added word must be type string"
+        self.newWord = word
         # search for word in list, add a tally to counter
         word_present = False
         for i, pair in enumerate(self.wordList):

@@ -27,7 +27,7 @@ gen_text = []
 # else:
 #     raise ValueError("Usage: seed must be in sample")
 
-seed = process_text("autumn")
+seed = process_text("this")
 
 for i in range(gen_words):
     next = False
