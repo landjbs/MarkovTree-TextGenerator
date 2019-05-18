@@ -46,9 +46,9 @@ class Leaf:
         self.counter += 1
         # print(self.counter)
     def get_word(self):
-        print(self.counter, self.wordList)
+        # print(self.counter, self.wordList)
         num = random() * self.counter
-        print(num)
+        # print(num)
         for i, pair in enumerate(self.wordList):
             num += - pair[1]
             if num <= 0:

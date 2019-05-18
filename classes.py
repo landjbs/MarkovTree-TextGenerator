@@ -11,7 +11,6 @@ class Leaf:
         """
         Initialize leaf with word and counter of distance from base word
         """
-        # print("node added")
         # Name of nth word
         if type(name) is str:
             self.name = name
