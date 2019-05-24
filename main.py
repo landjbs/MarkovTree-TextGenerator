@@ -16,7 +16,6 @@ for i in range(1,sample_length-(n+1)):
     tree.search_add(sample[i:i+n], sample[i+n+1])
 print("Loading complete!")
 
-# print(sample[500:500+n], tree.nav(sample[500:500+n]))
 gen_words = 500
 gen_text = []
 
